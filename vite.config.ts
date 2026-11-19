@@ -12,7 +12,13 @@ export default defineConfig(() => {
       {
         name: 'caresetu-backend-api',
         configureServer(server) {
-          server.middlewares.use(app);
+          server.middlewares.use((req, res, next) => {
+            if (req.url && req.url.startsWith('/api')) {
+              app(req, res, next);
+            } else {
+              next();
+            }
+          });
         },
       },
     ],

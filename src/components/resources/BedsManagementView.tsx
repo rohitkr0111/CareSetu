@@ -36,19 +36,21 @@ export const BedsManagementView: React.FC = () => {
             Real-time census tracking with oxygen, ventilator, and emergency reservation controls.
           </p>
 
-        {/* 3 Status Summaries */}
+        {/* Dynamic Status Summaries */}
         <div className="mt-6 metric-strip text-xs font-mono">
           <div className="px-3 py-2">
             <span className="text-[#667085]">Occupied: </span>
-            <span className="text-[#1C1C1E] font-bold">342 (85.5%)</span>
+            <span className="text-[#1C1C1E] font-bold">
+              {occupiedCount} ({Math.round((occupiedCount / Math.max(beds.length, 1)) * 100)}%)
+            </span>
           </div>
           <div className="px-3 py-2">
             <span className="text-[#667085]">Available: </span>
-            <span className="text-[#4F7A5F] font-bold">58</span>
+            <span className="text-[#4F7A5F] font-bold">{availableCount}</span>
           </div>
           <div className="px-3 py-2">
             <span className="text-[#667085]">Reserved: </span>
-            <span className="text-[#243B80] font-bold">17</span>
+            <span className="text-[#243B80] font-bold">{reservedCount}</span>
           </div>
         </div>
         </div>

@@ -19,6 +19,9 @@ export const StaffRosterView: React.FC = () => {
     return matchesDept && matchesSearch;
   });
 
+  const activeCount = doctors.filter((d) => d.status === 'Available' || d.status === 'In Surgery' || d.status === 'On Round').length;
+  const standbyCount = doctors.filter((d) => d.status === 'On Call').length;
+
   return (
     <div className="editorial-page space-y-8 pb-12">
       {/* Header Summary */}
@@ -36,15 +39,17 @@ export const StaffRosterView: React.FC = () => {
         <div className="mt-6 metric-strip text-xs font-mono">
           <div className="px-3 py-2">
             <span className="text-[#667085]">Total Roster: </span>
-            <span className="text-[#1C1C1E] font-bold">94</span>
+            <span className="text-[#1C1C1E] font-bold">{doctors.length}</span>
           </div>
           <div className="px-3 py-2">
             <span className="text-[#667085]">Active On-Duty: </span>
-            <span className="text-[#4F7A5F] font-bold">86 (91%)</span>
+            <span className="text-[#4F7A5F] font-bold">
+              {activeCount} ({Math.round((activeCount / Math.max(doctors.length, 1)) * 100)}%)
+            </span>
           </div>
           <div className="px-3 py-2">
             <span className="text-[#667085]">Trauma Standby: </span>
-            <span className="text-[#243B80] font-bold">8</span>
+            <span className="text-[#243B80] font-bold">{standbyCount}</span>
           </div>
         </div>
         </div>

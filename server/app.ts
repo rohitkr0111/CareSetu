@@ -25,12 +25,3 @@ app.use((req, res, next) => {
 // API Routes
 app.use('/api', router);
 
-// Root health probe
-app.get('/', (req, res) => {
-  res.json({
-    name: 'CareSetu Hospital Resource Intelligence Engine',
-    version: '2.4.0',
-    status: 'Operational',
-    documentation: '/api/health',
-  });
-});

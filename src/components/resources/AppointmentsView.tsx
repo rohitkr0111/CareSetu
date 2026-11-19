@@ -20,6 +20,11 @@ export const AppointmentsView: React.FC = () => {
     return matchesDept && matchesSearch;
   });
 
+  const waitingCount = appointments.filter((a) => a.status === 'WAITING').length;
+  const delayedCount = appointments.filter((a) => a.status === 'DELAYED').length;
+  const confirmedCount = appointments.filter((a) => a.status === 'CONFIRMED').length;
+  const completedCount = appointments.filter((a) => a.status === 'COMPLETED').length;
+
   return (
     <div className="editorial-page space-y-8 pb-12">
       {/* Header & Top 4 Metrics */}
@@ -41,20 +46,20 @@ export const AppointmentsView: React.FC = () => {
         {/* 4 Metrics */}
         <div className="lg:col-span-12 metric-strip grid grid-cols-2 sm:grid-cols-4">
           <div className="p-4">
-            <span className="text-[11px] text-[#667085] font-medium">Today's Appointments</span>
-            <div className="text-2xl font-bold font-mono text-[#1C1C1E] mt-0.5">1,248</div>
+            <span className="text-[11px] text-[#667085] font-medium">Active Appointments</span>
+            <div className="text-2xl font-bold font-mono text-[#1C1C1E] mt-0.5">{appointments.length}</div>
           </div>
           <div className="p-4">
             <span className="text-[11px] text-[#667085] font-medium">Waiting in Queue</span>
-            <div className="text-2xl font-bold font-mono text-[#243B80] mt-0.5">78</div>
+            <div className="text-2xl font-bold font-mono text-[#243B80] mt-0.5">{waitingCount}</div>
           </div>
           <div className="p-4">
-            <span className="text-[11px] text-[#667085] font-medium">Delayed (&gt;15 min)</span>
-            <div className="text-2xl font-bold font-mono text-[#A14D45] mt-0.5">14</div>
+            <span className="text-[11px] text-[#667085] font-medium">Delayed Schedule</span>
+            <div className="text-2xl font-bold font-mono text-[#A14D45] mt-0.5">{delayedCount}</div>
           </div>
           <div className="p-4">
-            <span className="text-[11px] text-[#667085] font-medium">Available Open Slots</span>
-            <div className="text-2xl font-bold font-mono text-[#4F7A5F] mt-0.5">42</div>
+            <span className="text-[11px] text-[#667085] font-medium">Confirmed / In-Triage</span>
+            <div className="text-2xl font-bold font-mono text-[#4F7A5F] mt-0.5">{confirmedCount}</div>
           </div>
         </div>
       </section>

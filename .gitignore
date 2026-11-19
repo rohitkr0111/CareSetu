@@ -1,8 +1,27 @@
+# Dependencies
 node_modules/
-build/
+.pnp
+.pnp.js
+
+# Production Build
 dist/
+build/
 coverage/
+
+# SQLite WAL & temporary files
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Environment & Local Config
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# OS & Editor
 .DS_Store
+Thumbs.db
 *.log
-.env*
-.env.example
+.idea/
+.vscode/
