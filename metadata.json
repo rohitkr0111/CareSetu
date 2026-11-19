@@ -1,0 +1,6 @@
+{
+  "name": "CareSetu — Hospital Resource Intelligence",
+  "description": "Intelligent Hospital Resource Management and Optimization System with predictive demand forecasting, explainable AI allocation, and real-time operations command center.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
